@@ -20,5 +20,5 @@ const CONNECTION_OPTIONS =
 const sequelize = new Sequelize(DATABASE_URL, CONNECTION_OPTIONS);
 
 module.exports ={
-    sequelize
+    sequelize,
 }
