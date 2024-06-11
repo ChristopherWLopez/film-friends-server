@@ -20,7 +20,17 @@ function makeUser(sequelize){
 
     User.findLoggedIn = async ( username, password)=>{
 
-        const user = await User.findOne({ })
+        const user = await User.findOne({ where: { username } });
+
+        if(user == null){
+            return null;
+        }
+        // if user found and compare method runs then we return the user
+        if(await bcrypt.compare(password, user.password)) {
+            return user;
+        };
+        
+        return User;
     }
 
 }   
