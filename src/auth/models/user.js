@@ -18,7 +18,7 @@ function makeUser(sequelize){
         return user;
     };
 
-    User.findLoggedIn = async ( username, password)=>{
+    User.findLoggedIn = async (username, password)=>{
 
         const user = await User.findOne({ where: { username } });
 
@@ -34,3 +34,5 @@ function makeUser(sequelize){
     }
 
 }   
+
+module.exports = { makeUser };
