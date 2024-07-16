@@ -23,3 +23,24 @@ async function signup(req, res, next){
     }
         // on any error, trigger your error handler with an appropriate error
 }
+
+async function signin(req, res, next){
+
+    let authorization = req.header('Authorization');
+    if(!authorization.startsWith('Basic')){
+        next(new Error('Invalid authorization scheme'));
+        return;
+    }
+    
+    authorization = base64.decode(authorization.replace('Basic ' , ''));
+
+    console.log('Basic authorization request', authorization);
+
+    const [ username, password ] = authorization.split(':');
+    let user = await User.findLoggedIn(username, password);
+    if(user){
+        res.status(200).send({ username: user.username });
+    }else{
+        next(new Error('Invalid login') );
+    }
+}
