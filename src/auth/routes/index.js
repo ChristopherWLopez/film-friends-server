@@ -44,3 +44,5 @@ async function signin(req, res, next){
         next(new Error('Invalid login') );
     }
 }
+
+module.exports = { authRoutes };

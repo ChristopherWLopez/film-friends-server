@@ -20,7 +20,7 @@ async function getUser(req, res, next){
     const id = req.params.id;
     const user = await User.findOne({
         where: { id: id },
-        include: Hobby,
+        
     });
     if (user === null){
         next();
