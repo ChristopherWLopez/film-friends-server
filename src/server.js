@@ -11,8 +11,8 @@ server.use(userRoutes);
 
 server.get('/home', (req, res)=> res.send('Welcome home'));
 
-server.get('api/data', (req, res)=>{
-    res.send("This is the truth");
+server.get('/api', (req, res)=>{
+    res.send('This is the truth');
 });
 
 
